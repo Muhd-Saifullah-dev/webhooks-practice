@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0.0",
+  "records": [
+    {
+      "id": "72405dbf-0b35-45f0-9d6d-b850b47969b9",
+      "collectionId": "",
+      "name": "Webhooks",
+      "description": "",
+      "deleted": false,
+      "type": "collection",
+      "data": {
+        "variables": {
+          "base_url_for_lms": {
+            "localValue": "",
+            "syncValue": "http://localhost:3001",
+            "type": "string",
+            "id": 0
+          },
+          "base_url_for_automator": {
+            "localValue": "",
+            "syncValue": "http://localhost:3000",
+            "type": "string",
+            "id": 1
+          }
+        },
+        "auth": {
+          "authConfigStore": {},
+          "currentAuthType": "INHERIT"
+        }
+      }
+    },
+    {
+      "id": "2bf60d5a-8a0b-461f-a862-490d6d69bfe4",
+      "collectionId": "72405dbf-0b35-45f0-9d6d-b850b47969b9",
+      "name": "automator",
+      "deleted": false,
+      "type": "api",
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url_for_automator}}",
+          "queryParams": [],
+          "method": "GET",
+          "headers": [],
+          "body": null,
+          "contentType": "text/plain",
+          "pathVariables": []
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": ""
+        },
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        },
+        "response": null,
+        "testResults": []
+      }
+    },
+    {
+      "id": "519ad041-d990-4d1f-9275-fdc16c80cf0a",
+      "collectionId": "72405dbf-0b35-45f0-9d6d-b850b47969b9",
+      "name": "LMS Purchase API Webhooks",
+      "deleted": false,
+      "type": "api",
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url_for_lms}}/api/purchase",
+          "queryParams": [],
+          "method": "POST",
+          "headers": [],
+          "body": "{\n\"name\":\"saif\",\n  \"email\":\"saifullah@gmail.com\",\n  \"course\":\"markhor\"\n}",
+          "bodyContainer": {
+            "text": "{\n\"name\":\"saif\",\n  \"email\":\"saifullah@gmail.com\",\n  \"course\":\"markhor\"\n}",
+            "form": [],
+            "multipartForm": []
+          },
+          "contentType": "application/json",
+          "pathVariables": []
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": ""
+        },
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        },
+        "response": {
+          "body": "{\"message\":\"course purchase successful !\"}",
+          "time": 3905.896399974823,
+          "headers": [
+            {
+              "key": "x-powered-by",
+              "value": "Express"
+            },
+            {
+              "key": "content-type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "content-length",
+              "value": "42"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"2a-Ics8O3p/Z7f0wuIuXq9PeJYJ6pE\""
+            },
+            {
+              "key": "date",
+              "value": "Sat, 15 Nov 2025 05:42:57 GMT"
+            },
+            {
+              "key": "connection",
+              "value": "close"
+            }
+          ],
+          "status": 200,
+          "statusText": "OK",
+          "redirectedUrl": ""
+        },
+        "testResults": [],
+        "error": null
+      }
+    },
+    {
+      "id": "04fdad3f-7bf1-4635-8bfc-8043fe388bbe",
+      "collectionId": "72405dbf-0b35-45f0-9d6d-b850b47969b9",
+      "name": "LMS Register API  Webhook ",
+      "deleted": false,
+      "type": "api",
+      "data": {
+        "type": "http",
+        "request": {
+          "url": "{{base_url_for_lms}}/api/register-webhook",
+          "queryParams": [],
+          "method": "POST",
+          "headers": [],
+          "body": "\n{\n  \"url\":\"http://localhost:3000/webhook\",\n  \"token\":\"someSecret\",\n  \"event\":\"purchase\"\n}\n",
+          "bodyContainer": {
+            "text": "\n{\n  \"url\":\"http://localhost:3000/webhook\",\n  \"token\":\"someSecret\",\n  \"event\":\"purchase\"\n}\n",
+            "form": [],
+            "multipartForm": []
+          },
+          "contentType": "application/json",
+          "pathVariables": []
+        },
+        "scripts": {
+          "preRequest": "",
+          "postResponse": ""
+        },
+        "auth": {
+          "currentAuthType": "INHERIT",
+          "authConfigStore": {}
+        },
+        "response": null,
+        "testResults": []
+      }
+    }
+  ]
+}
