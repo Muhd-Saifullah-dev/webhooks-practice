@@ -70,7 +70,7 @@ async function sendWebhooks(webhooks: Webhook[], payload: Payload) {
           method: "POST",
           headers: {
             "content-type": "application/json",
-            "X-WebhookToken": webhook.token,
+            "x-Webhook-token": webhook.token,
           },
           body: JSON.stringify(payload),
         });

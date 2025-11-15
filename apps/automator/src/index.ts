@@ -22,17 +22,27 @@ const port = process.env.PORT || 3000;
 //   course: string;
 // };
 
-// app.post("/api/register-webhook", (req, res) => {
-//   const { url, token, event } = req.body;
-//   db.push({
-//     id: Date.now().toString(),
-//     url,
-//     token,
-//     event,
-//   });
-//   console.log("DB", db);
-//   return res.json({ message: "OK" });
-// });
+app.post("/webhook", (req, res) => {
+
+console.log("headers ",req.headers);
+
+
+ const token = req.headers["x-webhook-token"]; // lowercase!
+
+  if (token !== "someSecret") {
+    return res.status(401).json({ message: "token is mismatch" });
+  }
+
+
+const {id,name,email,course}=req.body
+  // console.log("body",req.body)
+  //create dsicord invite
+  // send email to the student
+
+  console.log(`Invite sent to ${name} on ${email} for course ${course}`)
+
+  return res.json({ message: "OK" });
+});
 
 
 
